@@ -53,9 +53,17 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
-let yourChoice = playerChoice();
-let AiChoice = botChoice();
 
-playRound(yourChoice, AiChoice);
 
-// Then depending on how many round we want to play we can make it work
+// Then depending on how many round we want to play we can make it work well now we want best of 5 so we'll play for 5 rounds 
+// to play for 5 rounds we can call playRound again and again for 5 rounds using loop and then can check for winner based on score after 5 rounds
+// and we'll also want new choices for each round played in the game
+
+function playGame(){
+    for(let i = 1; i <= 5; i++){
+        let yourChoice = playerChoice();
+        let AiChoice = botChoice();
+
+        playRound(yourChoice, AiChoice);
+    }
+}
