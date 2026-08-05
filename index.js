@@ -67,3 +67,20 @@ function playGame(){
         playRound(yourChoice, AiChoice);
     }
 }
+
+function winner(){
+    playGame();
+
+    if(humanScore > botScore){
+        console.log(`Hurrah!! You won the game!!
+            FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`);
+    }else if(humanScore < botScore){
+        console.log(`Alas!! You lost the game!!
+            FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`);
+    }else {
+        console.log(`game is Tied!!
+            FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`);
+    }
+}
+
+winner();
