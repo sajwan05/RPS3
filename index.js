@@ -8,6 +8,7 @@ console.log("Javascript is connected!");
 
 let humanScore = 0;
 let botScore = 0;
+let round = 0;
 
 // we need input for human/user choice
 function playerChoice(){
@@ -44,12 +45,15 @@ function playRound(humanChoice, computerChoice){
                 console.log(`Alas player lost the round!!
                 Player: ${humanChoice} ---- Bot: ${computerChoice}
                 Player: ${humanScore} ---- Bot: ${botScore}`);
-    }else {
+    }else if (humanChoice === computerChoice){
         botScore++;
         humanScore++;
         console.log(`Round got Tied!!
         Player: ${humanChoice} ---- Bot: ${computerChoice}
         Player: ${humanScore} ---- Bot: ${botScore}`);
+    }else{
+        console.log(" Error, Please chose from Rock Paper Scissors");
+        round--;
     }
 }
 
@@ -60,7 +64,7 @@ function playRound(humanChoice, computerChoice){
 // and we'll also want new choices for each round played in the game
 
 function playGame(){
-    for(let i = 1; i <= 5; i++){
+    for(round = 0; round < 5; round++){
         let yourChoice = playerChoice();
         let AiChoice = botChoice();
 
@@ -68,9 +72,7 @@ function playGame(){
     }
 }
 
-function winner(){
-    playGame();
-
+function showWinner(){
     if(humanScore > botScore){
         console.log(`Hurrah!! You won the game!!
             FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`);
@@ -83,4 +85,8 @@ function winner(){
     }
 }
 
-winner();
+playGame();
+
+if(round >= 5){
+    showWinner();
+}
