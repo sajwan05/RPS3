@@ -1,0 +1,61 @@
+console.log("Javascript is connected!");
+
+// Pseudocode
+
+// Rps console application 
+
+// So firstly we need humanScore and computer score variable to decide the winner for particular round or tie
+
+let humanScore = 0;
+let botScore = 0;
+
+// we need input for human/user choice
+function playerChoice(){
+    let choice = prompt(`Rock Paper Scissors shoot !
+        Please choose from Rock Paper or Scissors`);
+
+    return choice.toLowerCase().trim();
+}
+// we need randomized computer choice which bot will randomly return based on how we code it
+// we can use 3 already availble choice as array and access it by generatin random Index
+
+function botChoice(){
+    const choices = ["rock", "paper", "scissors"];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+
+    return choices[randomIndex];
+}
+// we need to play a round by passing values from computer choice and user choice to the play a round function 
+// in rock paper scissors there are 3 possibilities either player will won, lose or round will be tied
+// so player win in conditon like when player chose paper and if computer chose rock or p chose s computer chose paper and p chose rock and computer chose scissors
+
+function playRound(humanChoice, computerChoice){
+    if( (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") || 
+        (humanChoice === "scissors" && computerChoice === "paper")){
+            humanScore++;
+            console.log(`Player won the round!!
+                Player: ${humanChoice} ---- Bot: ${computerChoice}
+                Player: ${humanScore} ---- Bot: ${botScore}`);
+    }else if( (humanChoice === "rock" && computerChoice === "paper") ||
+              (humanChoice === "paper" && computerChoice === "scissors") || 
+              (humanChoice === "scissors" && computerChoice === "rock")){
+                botScore++;
+                console.log(`Alas player lost the round!!
+                Player: ${humanChoice} ---- Bot: ${computerChoice}
+                Player: ${humanScore} ---- Bot: ${botScore}`);
+    }else {
+        botScore++;
+        humanScore++;
+        console.log(`Round got Tied!!
+        Player: ${humanChoice} ---- Bot: ${computerChoice}
+        Player: ${humanScore} ---- Bot: ${botScore}`);
+    }
+}
+
+let yourChoice = playerChoice();
+let AiChoice = botChoice();
+
+playRound(yourChoice, AiChoice);
+
+// Then depending on how many round we want to play we can make it work
