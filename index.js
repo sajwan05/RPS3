@@ -1,11 +1,3 @@
-console.log("Javascript is connected!");
-
-// Pseudocode
-
-// Rps console application 
-
-// So firstly we need humanScore and computer score variable to decide the winner for particular round or tie
-
 let humanScore = 0;
 let botScore = 0;
 let round = 0;
@@ -30,19 +22,19 @@ function botChoice(){
 // in rock paper scissors there are 3 possibilities either player will won, lose or round will be tied
 // so player win in conditon like when player chose paper and if computer chose rock or p chose s computer chose paper and p chose rock and computer chose scissors
 
-function playRound(humanChoice, computerChoice){
+function playRound(humanChoice, computerChoice, round){
     if( (humanChoice === "rock" && computerChoice === "scissors") ||
         (humanChoice === "paper" && computerChoice === "rock") || 
         (humanChoice === "scissors" && computerChoice === "paper")){
             humanScore++;
-            console.log(`Player won the round!!
+            console.log(`Player won the round!
                 Player: ${humanChoice} ---- Bot: ${computerChoice}
                 Player: ${humanScore} ---- Bot: ${botScore}`);
     }else if( (humanChoice === "rock" && computerChoice === "paper") ||
               (humanChoice === "paper" && computerChoice === "scissors") || 
               (humanChoice === "scissors" && computerChoice === "rock")){
                 botScore++;
-                console.log(`Alas player lost the round!!
+                console.log(`Alas player lost the round!
                 Player: ${humanChoice} ---- Bot: ${computerChoice}
                 Player: ${humanScore} ---- Bot: ${botScore}`);
     }else if (humanChoice === computerChoice){
@@ -54,6 +46,7 @@ function playRound(humanChoice, computerChoice){
     }else{
         console.log(" Error, Please chose from Rock Paper Scissors");
         round--;
+        
     }
 }
 
@@ -64,7 +57,7 @@ function playRound(humanChoice, computerChoice){
 // and we'll also want new choices for each round played in the game
 
 function playGame(){
-    for(round = 0; round < 5; round++){
+    for(round = 1; round <= 5; round++){
         let yourChoice = playerChoice();
         let AiChoice = botChoice();
 
@@ -87,6 +80,4 @@ function showWinner(){
 
 playGame();
 
-if(round >= 5){
-    showWinner();
-}
+showWinner();
