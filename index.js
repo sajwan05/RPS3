@@ -31,7 +31,12 @@ humanChoices.addEventListener("click", (event) => {
         let humanChoice = target.id;
         let aiChoice = botChoice();
 
-        playRound(humanChoice, aiChoice);
+        if(humanScore < 5 && botScore < 5){
+            playRound(humanChoice, aiChoice);
+        }
+        if(humanScore === 5 || botScore === 5){
+            showWinner();
+        }
 });
 
 // we need to play a round by passing values from computer choice and user choice to the play a round function 
@@ -92,7 +97,3 @@ function showWinner(){
             FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`);
     }
 }
-
-// playGame();
-
-// showWinner();
