@@ -3,14 +3,21 @@ let botScore = 0;
 let round = 0;
 
 // we need input for human/user choice
-function playerChoice(){
-    let choice = prompt(`Rock Paper Scissors shoot !
-        Please choose from Rock Paper or Scissors`);
+// function playerChoice(){
+//     let choice = prompt(`Rock Paper Scissors shoot !
+//         Please choose from Rock Paper or Scissors`);
 
-    return choice.toLowerCase().trim();
-}
+//     return choice.toLowerCase().trim();
+// }
 // we need randomized computer choice which bot will randomly return based on how we code it
 // we can use 3 already availble choice as array and access it by generatin random Index
+
+// so for human choice now we will use dom manipulation
+
+const output = document.querySelector(".output");
+const humanChoices = document.querySelector(".choices");
+const buttons = document.querySelector("button");
+
 
 function botChoice(){
     const choices = ["rock", "paper", "scissors"];
@@ -18,11 +25,20 @@ function botChoice(){
 
     return choices[randomIndex];
 }
+
+humanChoices.addEventListener("click", (event) => {
+        const target = event.currentTarget;
+        let humanChoice = target.id;
+        let aiChoice = botChoice();
+
+        playRound(humanChoice, aiChoice);
+});
+
 // we need to play a round by passing values from computer choice and user choice to the play a round function 
 // in rock paper scissors there are 3 possibilities either player will won, lose or round will be tied
 // so player win in conditon like when player chose paper and if computer chose rock or p chose s computer chose paper and p chose rock and computer chose scissors
 
-function playRound(humanChoice, computerChoice, round){
+function playRound(humanChoice, computerChoice){
     if( (humanChoice === "rock" && computerChoice === "scissors") ||
         (humanChoice === "paper" && computerChoice === "rock") || 
         (humanChoice === "scissors" && computerChoice === "paper")){
@@ -45,7 +61,6 @@ function playRound(humanChoice, computerChoice, round){
         Player: ${humanScore} ---- Bot: ${botScore}`);
     }else{
         console.log(" Error, Please chose from Rock Paper Scissors");
-        round--;
         
     }
 }
@@ -56,14 +71,14 @@ function playRound(humanChoice, computerChoice, round){
 // to play for 5 rounds we can call playRound again and again for 5 rounds using loop and then can check for winner based on score after 5 rounds
 // and we'll also want new choices for each round played in the game
 
-function playGame(){
-    for(round = 1; round <= 5; round++){
-        let yourChoice = playerChoice();
-        let AiChoice = botChoice();
+// function playGame(){
+//     for(round = 1; round <= 5; round++){
+//         let yourChoice = playerChoice();
+//         let AiChoice = botChoice();
 
-        playRound(yourChoice, AiChoice);
-    }
-}
+//         playRound(yourChoice, AiChoice);
+//     }
+// }
 
 function showWinner(){
     if(humanScore > botScore){
@@ -78,6 +93,6 @@ function showWinner(){
     }
 }
 
-playGame();
+// playGame();
 
-showWinner();
+// showWinner();
