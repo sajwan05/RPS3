@@ -27,7 +27,7 @@ function botChoice(){
 }
 
 humanChoices.addEventListener("click", (event) => {
-        const target = event.currentTarget;
+        const target = event.target;
         let humanChoice = target.id;
         let aiChoice = botChoice();
 
