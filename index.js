@@ -17,6 +17,7 @@ let round = 0;
 const output = document.querySelector(".output");
 const humanChoices = document.querySelector(".choices");
 const buttons = document.querySelector("button");
+const finalResult = document.querySelector("strong");
 
 
 function botChoice(){
@@ -48,24 +49,24 @@ function playRound(humanChoice, computerChoice){
         (humanChoice === "paper" && computerChoice === "rock") || 
         (humanChoice === "scissors" && computerChoice === "paper")){
             humanScore++;
-            console.log(`Player won the round!
+            output.textContent = `Player won the round!
                 Player: ${humanChoice} ---- Bot: ${computerChoice}
-                Player: ${humanScore} ---- Bot: ${botScore}`);
+                Player: ${humanScore} ---- Bot: ${botScore}\n\n`;
     }else if( (humanChoice === "rock" && computerChoice === "paper") ||
               (humanChoice === "paper" && computerChoice === "scissors") || 
               (humanChoice === "scissors" && computerChoice === "rock")){
                 botScore++;
-                console.log(`Alas player lost the round!
+                output.textContent = `Alas player lost the round!
                 Player: ${humanChoice} ---- Bot: ${computerChoice}
-                Player: ${humanScore} ---- Bot: ${botScore}`);
+                Player: ${humanScore} ---- Bot: ${botScore}\n\n`;
     }else if (humanChoice === computerChoice){
         botScore++;
         humanScore++;
-        console.log(`Round got Tied!!
+        output.textContent = `Round got Tied!!
         Player: ${humanChoice} ---- Bot: ${computerChoice}
-        Player: ${humanScore} ---- Bot: ${botScore}`);
+        Player: ${humanScore} ---- Bot: ${botScore}\n\n`;
     }else{
-        console.log(" Error, Please chose from Rock Paper Scissors");
+        output.textContent = " Error, Please chose from Rock Paper Scissors";
         
     }
 }
@@ -87,13 +88,14 @@ function playRound(humanChoice, computerChoice){
 
 function showWinner(){
     if(humanScore > botScore){
-        console.log(`Hurrah!! You won the game!!
-            FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`);
+        finalResult.textContent = `Hurrah!! You won the game!!
+            FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`;
     }else if(humanScore < botScore){
-        console.log(`Alas!! You lost the game!!
-            FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`);
+        finalResult.textContent = `Alas!! You lost the game!!
+            FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`;
     }else {
-        console.log(`game is Tied!!
-            FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`);
+        finalResult.textContent = `game is Tied!!
+            FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`;
     }
+
 }
