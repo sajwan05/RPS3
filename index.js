@@ -98,4 +98,5 @@ function showWinner(){
             FINAL SCORE:Player: ${humanScore} ---- AI: ${botScore}`;
     }
 
+    output.textContent = "";
 }
